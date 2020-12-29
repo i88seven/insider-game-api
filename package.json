@@ -1,0 +1,25 @@
+{
+  "name": "insider-game-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i88seven/insider-game-api.git"
+  },
+  "author": "i88seven",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/i88seven/insider-game-api/issues"
+  },
+  "homepage": "https://github.com/i88seven/insider-game-api#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "http": "^0.0.1-security",
+    "socket.io": "^3.0.4"
+  }
+}
