@@ -8,13 +8,17 @@ const PORT = process.env.PORT || 3001
 io.on('connection', socket => {
   console.log(`socket_id: ${socket.id} is connected.`)
 
-  socket.on('join', (roomId, id, name) => {
+  socket.on('join-room', (roomId, id, name) => {
     socket.join(roomId)
     socket.to(roomId).emit('join-room', {
       id,
       name,
     });
     console.log(`socket_id: ${socket.id} joined in room ${roomId}`)
+  })
+
+  socket.on('broadcast-players', (roomId, players) => {
+    socket.to(roomId).emit('broadcast-players', players);
   })
 })
 
