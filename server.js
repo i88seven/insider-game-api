@@ -16,11 +16,6 @@ io.on('connection', socket => {
     });
     console.log(`socket_id: ${socket.id} joined in room ${roomId}`)
   })
-
-  socket.on('send-msg', (msg, roomId) => {
-    socket.to(roomId).emit('new-msg', msg)
-    console.log(`receive message: ${JSON.stringify(msg)}`)
-  })
 })
 
 server.listen(PORT)
