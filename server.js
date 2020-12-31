@@ -35,6 +35,11 @@ io.on('connection', socket => {
     console.log(`${roomId}: start-game ${limit}`)
     socket.to(roomId).emit('start-game', limit);
   })
+
+  socket.on('correct', (roomId, subject, searchTimeLimit) => {
+    console.log(`${roomId}: correct ${subject} ${searchTimeLimit}`)
+    socket.to(roomId).emit('correct', subject, searchTimeLimit);
+  })
 })
 
 server.listen(PORT)
