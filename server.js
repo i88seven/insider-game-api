@@ -20,6 +20,11 @@ io.on('connection', socket => {
   socket.on('broadcast-players', (roomId, players) => {
     socket.to(roomId).emit('broadcast-players', players);
   })
+
+  socket.on('decide-roles', (roomId, roles) => {
+    console.log(`${roomId}: decide-roles`)
+    socket.to(roomId).emit('decide-roles', roles);
+  })
 })
 
 server.listen(PORT)
