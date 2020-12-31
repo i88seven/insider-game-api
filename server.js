@@ -40,6 +40,16 @@ io.on('connection', socket => {
     console.log(`${roomId}: correct ${subject} ${searchTimeLimit}`)
     socket.to(roomId).emit('correct', subject, searchTimeLimit);
   })
+
+  socket.on('vote', (roomId, fromId, toId) => {
+    console.log(`${roomId}: vote ${fromId} ${toId}`)
+    socket.to(roomId).emit('vote', fromId, toId);
+  })
+
+  socket.on('vote-result', (roomId, votes) => {
+    console.log(`${roomId}: vote-result ${votes}`)
+    socket.to(roomId).emit('vote-result', votes);
+  })
 })
 
 server.listen(PORT)
