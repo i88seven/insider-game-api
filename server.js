@@ -25,6 +25,11 @@ io.on('connection', socket => {
     console.log(`${roomId}: decide-roles`)
     socket.to(roomId).emit('decide-roles', roles);
   })
+
+  socket.on('decide-subject', (roomId, subject) => {
+    console.log(`${roomId}: decide-subject ${subject}`)
+    socket.to(roomId).emit('decide-subject', subject);
+  })
 })
 
 server.listen(PORT)
