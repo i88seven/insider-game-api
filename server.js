@@ -50,6 +50,11 @@ io.on('connection', socket => {
     console.log(`${roomId}: vote-result ${votes}`)
     socket.to(roomId).emit('vote-result', votes);
   })
+
+  socket.on('next-game', (roomId, roles) => {
+    console.log(`${roomId}: next-game`)
+    socket.to(roomId).emit('next-game', roles);
+  })
 })
 
 server.listen(PORT)
