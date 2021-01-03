@@ -55,6 +55,16 @@ io.on('connection', socket => {
     console.log(`${roomId}: next-game`)
     socket.to(roomId).emit('next-game', roles);
   })
+
+  socket.on('reload', (roomId, fromId) => {
+    console.log(`${roomId}: reload from ${fromId}`)
+    socket.to(roomId).emit('reload', fromId);
+  })
+
+  socket.on('reload-response', (roomId, toId, states) => {
+    console.log(`${roomId}: reload-response to ${toId}`)
+    socket.to(roomId).emit('reload-response', toId, states);
+  })
 })
 
 server.listen(PORT)
