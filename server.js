@@ -51,9 +51,9 @@ io.on('connection', socket => {
     socket.to(roomId).emit('vote-result', votes);
   })
 
-  socket.on('next-game', (roomId, roles) => {
+  socket.on('next-game', (roomId, memberChange, roles) => {
     console.log(`${roomId}: next-game`)
-    socket.to(roomId).emit('next-game', roles);
+    socket.to(roomId).emit('next-game', memberChange, roles);
   })
 
   socket.on('reload', (roomId, fromId) => {
