@@ -26,19 +26,19 @@ io.on('connection', socket => {
     socket.to(roomId).emit('decide-roles', roles);
   })
 
-  socket.on('decide-subject', (roomId, subject) => {
-    console.log(`${roomId}: decide-subject ${subject}`)
-    socket.to(roomId).emit('decide-subject', subject);
+  socket.on('decide-subject', (roomId, subject, isHost) => {
+    console.log(`${roomId}: decide-subject ${subject} from ${isHost ? 'host' : 'master'}`)
+    socket.to(roomId).emit('decide-subject', subject, isHost);
   })
 
-  socket.on('start-game', (roomId, limit) => {
-    console.log(`${roomId}: start-game ${limit}`)
-    socket.to(roomId).emit('start-game', limit);
+  socket.on('start-game', (roomId, limit, isHost) => {
+    console.log(`${roomId}: start-game ${limit} from ${isHost ? 'host' : 'master'}`)
+    socket.to(roomId).emit('start-game', limit, isHost);
   })
 
-  socket.on('correct', (roomId, subject, searchTimeLimit) => {
-    console.log(`${roomId}: correct ${subject} ${searchTimeLimit}`)
-    socket.to(roomId).emit('correct', subject, searchTimeLimit);
+  socket.on('correct', (roomId, subject, searchTimeLimit, isHost) => {
+    console.log(`${roomId}: correct ${subject} ${searchTimeLimit} from ${isHost ? 'host' : 'master'}`)
+    socket.to(roomId).emit('correct', subject, searchTimeLimit, isHost);
   })
 
   socket.on('vote', (roomId, fromId, toId) => {
