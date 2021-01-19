@@ -17,6 +17,11 @@ io.on('connection', socket => {
     console.log(`socket_id: ${socket.id} joined in room ${roomId}`)
   })
 
+  socket.on('re-send-players', (roomId) => {
+    console.log(`${roomId}: re-send-players`)
+    socket.to(roomId).emit('re-send-players');
+  })
+
   socket.on('broadcast-players', (roomId, players) => {
     socket.to(roomId).emit('broadcast-players', players);
   })
