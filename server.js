@@ -26,6 +26,11 @@ io.on('connection', socket => {
     socket.to(roomId).emit('broadcast-players', players);
   })
 
+  socket.on('send-settings', (roomId, settings) => {
+    console.log(`${roomId}: send-settings ${settings}`)
+    socket.to(roomId).emit('send-settings', settings);
+  })
+
   socket.on('decide-roles', (roomId, roles) => {
     console.log(`${roomId}: decide-roles`)
     socket.to(roomId).emit('decide-roles', roles);
